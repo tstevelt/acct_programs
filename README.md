@@ -1,3 +1,4 @@
+## Accounting programs called from accounting menu.
 Program | Description
 accounts |  G/L Accounts Maintenance
 ar_arcust |  A/R Customer Maintenance screen
