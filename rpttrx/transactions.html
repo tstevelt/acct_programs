@@ -1,0 +1,111 @@
+<!doctype html public '-//w3c//dtd html 4.0 transitional//en'>
+<html>
+<head>
+<title>transactions report</title>
+<script language='JavaScript1.1'>
+<!-- hide code from non-js browsers
+function clearall( Prefix, PreLen )
+{
+	var FieldName = 'abc';
+
+	for ( var Index = 0; Index < document.rptform.elements.length; Index++ )
+	{
+		FieldName = document.rptform.elements[Index].name;
+		if ( FieldName.substr(0,PreLen) == Prefix )
+		{
+			document.rptform.elements[Index].checked = false;
+		}
+	}
+}
+
+function setall( Prefix, PreLen )
+{
+	var FieldName = 'abc';
+
+	for ( var Index = 0; Index < document.rptform.elements.length; Index++ )
+	{
+		FieldName = document.rptform.elements[Index].name;
+		if ( FieldName.substr(0,PreLen) == Prefix )
+		{
+			document.rptform.elements[Index].checked = true;
+		}
+	}
+}
+
+function runrpt(width,height)
+{
+var options = 'screenX=10,screenY=10,width=' + width + ',height=' + height + ',resizable=1,menubar=0,scrollbars=1';
+	window.document.rptform.what.value='go';
+	window.open ( '', 'results', options );
+	window.document.rptform.target='results';
+	window.document.rptform.submit();
+}
+function saverpt(width,height)
+{
+//var command = 'entry.cgi?edit=' + Trxnum;
+//var options = 'screenX=10,screenY=10,width=600,height=500,resizable=1,menubar=0,scrollbars=1';
+//window.open(command,'editwin',options);
+
+var options = 'screenX=10,screenY=10,width=' + width + ',height=' + height + ',resizable=1,menubar=0,scrollbars=1';
+	window.document.rptform.what.value='save';
+	window.open ( '', 'results', options );
+	window.document.rptform.target='results';
+	window.document.rptform.submit();
+}
+// end hiding -->
+</script>
+</head>
+<body bgcolor='#ffffff'>
+<form name='rptform' action='cgitest.cgi' method='POST' enctype='application/x-www-form-urlencoded'>
+<input type='hidden' name='what' value='lunch'>
+<table align='center' border='1' cellpadding='2' cellspacing='0' width='650'>
+	<tr>
+		<td>report title</td>
+		<td><input type='text' name='title' size='50'></td>
+	</tr>
+	<tr>
+		<td>starting date</td>
+		<td><input type='text' name='startdate' size='10'></td>
+	</tr>
+	<tr>
+		<td>ending date</td>
+		<td><input type='text' name='enddate' size='10'></td>
+	</tr>
+	<tr>
+		<td>report name</td>
+		<td><input type='text' name='rptname' size='20'></td>
+	</tr>
+</table>
+<table align='center' border='1' cellpadding='2' cellspacing='0' width='650'>
+	<tr>
+		<th>x</th>
+		<th>category</th>
+	</tr>
+	<tr>
+		<td align='center'><input type='checkbox' name='cb_4000'></td>
+		<td>Medical Doctor - Carl</td>
+	</tr>
+	<tr>
+		<td align='center'><input type='checkbox' name='cb_4000'></td>
+		<td>Medical Medicine - Carl</td>
+	</tr>
+	<tr>
+		<td align='center'><input type='checkbox' name='cb_4000'></td>
+		<td>Medical Doctor - Sophia</td>
+	</tr>
+	<tr>
+		<td align='center'><input type='checkbox' name='cb_4000'></td>
+		<td>Medical Medicine - Sophia</td>
+	</tr>
+	<tr>
+		<td align='center' colspan='2'>
+<input type='button' value='clear' onClick='javascript:clearall("cb_",3);'>
+<input type='button' value='set'   onClick='javascript:setall("cb_",3);'>
+<input type='button' value='go'    onClick='javascript:runrpt(700,500);'>
+<input type='button' value='save'  onClick='javascript:saverpt(400,200);'>
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

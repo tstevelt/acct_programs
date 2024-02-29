@@ -1,0 +1,31 @@
+#/bin/sh
+
+#
+#	acct.stevel.com
+#
+
+WWWDIR=/var/www/vhosts/acct/html
+if [ ! -d $WWWDIR/images ]
+then
+	mkdir $WWWDIR/images
+fi
+
+for i in Spring Summer Fall Winter
+do
+	cp -pv $i*.jpg $WWWDIR/images
+done
+cp -pv ShowImages.html $WWWDIR
+
+#
+#	acct.silverhammersoftware.com
+#
+
+WWWDIR=/var/www/vhosts/shs_acct/html
+if [ ! -d $WWWDIR/images ]
+then
+	mkdir $WWWDIR/images
+fi
+
+cp -pv shs*.png $WWWDIR/images
+cp -pv ShowDarks.html $WWWDIR
+
