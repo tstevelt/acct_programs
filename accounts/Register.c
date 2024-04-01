@@ -122,6 +122,8 @@ void Register ()
 "select %s from trxh, trxd where trxh.trxnum = trxd.trxnum and acctnum = %ld %s order by trxdate, trxd.trxnum, seqnum",
 			FLDS_TRXV, xaccount.xacctnum, DateCriteria );
 
+// printf ( "%s<br>\n", StatementOne );
+
 	QueryOne = dbySelect ( "accounts", &MySql, StatementOne, LOGFILENAME );
 
 	while (( QueryOne->EachRow = mysql_fetch_row ( QueryOne->Result )) != NULL )
