@@ -55,7 +55,7 @@ int main ( int argc, char *argv[] )
 
 	webFreeParms ( ptrWebParms );
 
-	seed_random_with_usec ();
+	shs_seed_random ();
 
 	printf ( "<input type=hidden id='OnQuit' name='OnQuit' value='%c'>\n", OnQuit[0] );
 	printf ( "<input type=hidden id='what' name='what' value='lunch'>\n" );
