@@ -1,0 +1,9 @@
+
+
+
+PRG=/Users/tms/Sites/acct/rptcf.cgi
+
+
+echo "prevdate=010123|currdate=063023|ReportFormat=H|what=go" | $PRG
+
+

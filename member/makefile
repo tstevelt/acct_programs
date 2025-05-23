@@ -23,7 +23,7 @@ FILES = \
 $(PRG): $(LIB) $(XLIB)
 	echo "using gcc to load $(PRG)"
 	gcc -o $(PRG) $(LIB) $(XLIB)
-	cp -pv $(PRG) /var/www/vhosts/shs_acct/html/
+	cp -pv $(PRG) /var/www/vhosts/shs_acct/html
 
 $(LIB): $(FILES)
 

@@ -28,20 +28,64 @@ void Process ()
 {
 	char	*cp;
 	char	CommandLine[1024];
+	time_t	SystemTime;
 
+	time ( &SystemTime );
+
+
+#ifdef UNIX_VERSION
 	if (( cp = getenv ( "DOCUMENT_ROOT" )) == NULL )
 	{
 		SaveError ( "Cannot find file store" );
 		return;
 	}
 
-	sprintf ( CommandLine, "/usr/bin/mysqldump -h 127.0.0.1 %s > %s/%s/backup_%s.sql",
+	sprintf ( CommandLine, "/usr/bin/mysqldump -h 127.0.0.1 %s > %s/%s/backup_%s_%ld.sql",
 		SessionRecord.DbName, 
 		cp, 
 		SessionRecord.DbName, 
-		SessionRecord.DbName );
+		SessionRecord.DbName,
+		SystemTime );
+#else
+	char	*context;
+	char	*DbName;
+	if (( context = getenv ( "CONTEXT_DOCUMENT_ROOT" )) == NULL )
+	{
+		SaveError ( "Cannot find CONTEXT_DOCUMENT_ROOT" );
+		return;
+	}
 
-	printf ( "%s<br>", CommandLine );
+	if (( cp = getenv ( "REQUEST_URI" )) == NULL )
+	{
+		SaveError ( "Cannot find REQUEST_URI" );
+		return;
+	}
+
+	if ( strstr ( cp, "shs" ) != NULL )
+	{
+		DbName = "shs";
+	}
+	else if ( strstr ( cp, "acct" ) != NULL )
+	{
+		DbName = "acct";
+	}
+	else
+	{
+		SaveError ( "Unknown db in REQUEST_URI" );
+		return;
+	}
+
+	sprintf ( CommandLine, "/usr/local/bin/mysqldump %s > %s/%s/%s/backup_%s_%ld.sql",
+		DbName, 
+		context,
+		DbName, 
+		DbName,
+		DbName,
+		SystemTime );
+#endif
+
+	// printf ( "&emsp; debug %s<br>", CommandLine );
+	printf ( "&emsp;%s<br>", CommandLine );
 
 	system ( CommandLine );
 }

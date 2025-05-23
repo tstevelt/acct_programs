@@ -108,14 +108,21 @@ int ImportOFX ( char *Filename )
 		{
 			if ( InTransaction )
 			{
-				if ( Verbose )
+				if ( NewTrxd.xamount == 0 || Ignore ( NewTrxh.xrefnum ) == 1 )
 				{
-					printf ( "Save %04d-%02d-%02d [%s] [%s] %ld\n",
-						NewTrxh.xtrxdate.year4, NewTrxh.xtrxdate.month, NewTrxh.xtrxdate.day,
-						NewTrxh.xrefnum, NewTrxd.xpayee, NewTrxd.xamount );
+					printf ( "Skipping %s %.2f\n", NewTrxh.xrefnum, (double)NewTrxd.xamount/100.0 );
 				}
-				SaveTransaction ();
-				OutputCount++;
+				else
+				{
+					if ( Verbose )
+					{
+						printf ( "Save %04d-%02d-%02d [%s] [%s] %ld\n",
+							NewTrxh.xtrxdate.year4, NewTrxh.xtrxdate.month, NewTrxh.xtrxdate.day,
+							NewTrxh.xrefnum, NewTrxd.xpayee, NewTrxd.xamount );
+					}
+					SaveTransaction ();
+					OutputCount++;
+				}
 			}
 
 			InTransaction = 0;

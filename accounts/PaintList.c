@@ -141,7 +141,7 @@ void PaintList ()
 			printf ( "<th align='left'>name</th>\n" );
 			if ( SHOWCOUNT(xsystem.xshowamts[0]) )
 			{
-				printf ( "<th align='right'>count</th>\n" );
+				printf ( "<th align='left'>count</th>\n" );
 			}
 			if ( SHOWDATE(xsystem.xshowamts[0]) )
 			{

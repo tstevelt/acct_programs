@@ -77,6 +77,11 @@ int ImportQIF ( char *Filename )
 				snprintf ( NewTrxh.xrefnum, sizeof(NewTrxh.xrefnum), "%s", &xbuffer[1] );
 				break;
 			case '^':
+				if ( NewTrxd.xamount == 0 || Ignore ( NewTrxh.xrefnum ) == 1 )
+				{
+					printf ( "Skipping %s %.2f\n", NewTrxh.xrefnum, (double)NewTrxd.xamount/100.0 );
+					break;
+				}
 				if ( Verbose )
 				{
 					printf ( "Save %04d-%02d-%02d [%s] [%s] %ld\n",

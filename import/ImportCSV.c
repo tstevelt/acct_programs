@@ -60,7 +60,7 @@ static	int		AmountColumn = -1;
 static	int		DecreaseColumn = -1;
 static	int		IncreaseColumn = -1;
 
-static	int		DebugImportCSV = 0;
+static	int		DebugImportCSV = 1;
 
 static int GetColumnNumbers ()
 {
@@ -213,6 +213,8 @@ static long ParseAmount ( char *Token, int lineno )
 	return ( CalculatedAmount );
 }
 
+char	sbuffer[SMALLBUFSZ];
+
 int ImportCSV ( char *Filename )
 {
 	FILE	*fp;
@@ -234,6 +236,8 @@ int ImportCSV ( char *Filename )
 	while ( fgets ( xbuffer, sizeof(xbuffer), fp ) != (char *)0 )
 	{
 		lineno++;
+
+		strcpy ( sbuffer, xbuffer );
 
 		if (( tokcnt = GetTokensCSV ( xbuffer, tokens, MAXTOKS, 0, 0 )) < 3 )
 		{
@@ -303,6 +307,12 @@ int ImportCSV ( char *Filename )
 		StrToDatevalFmt ( tokens[DateColumn], DATEFMT_MM_DD_YYYY, &NewTrxh.xtrxdate );
 		snprintf ( NewTrxd.xpayee, sizeof(NewTrxd.xpayee), "%s", tokens[PayeeColumn] );
 		snprintf ( NewTrxh.xrefnum, sizeof(NewTrxh.xrefnum), "%s", tokens[RefnumColumn] );
+		if ( NewTrxd.xamount == 0 || Ignore ( NewTrxh.xrefnum ) == 1 )
+		{
+			printf ( "Skipping %s %.2f\n", NewTrxh.xrefnum, (double)NewTrxd.xamount/100.0 );
+			printf ( "--------------------------------------------------------------------------------\n" );
+			continue;
+		}
 		if ( Verbose )
 		{
 			printf ( "Save %04d-%02d-%02d [%s] [%s] %ld\n",

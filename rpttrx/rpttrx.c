@@ -189,8 +189,10 @@ rptdeliv ( xmember.xmemail, xmember.xmemail, ReportType, fnBody, ReportOptions.O
 			 
 				if ( DebugMain == 0 )
 				{
-					unlink ( fnData );
-					unlink ( ReportOptions.OutputFilename );
+					// unlink ( fnData );
+					// unlink ( ReportOptions.OutputFilename );
+					printf ( "%s<br>\n", fnData );
+					printf ( "%s<br>\n", ReportOptions.OutputFilename );
 				}
 													
 			}

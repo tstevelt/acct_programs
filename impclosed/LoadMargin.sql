@@ -1,0 +1,16 @@
+insert into trxh ( trxnum, status, refnum, trxdate ) values ( 20271, 2, 'GAIN', '2023-08-02' );
+insert into trxd ( trxnum, seqnum, acctnum, payee, amount ) values ( 20271, 1, 1030, 'SCHWAB US DIVIDEND EQUITY ETF', -4 );
+insert into trxd ( trxnum, seqnum, acctnum, payee, amount ) values ( 20271, 2, 5011, 'SCHWAB US DIVIDEND EQUITY ETF', -4 );
+insert into trxh ( trxnum, status, refnum, trxdate ) values ( 20272, 2, 'GAIN', '2023-08-02' );
+insert into trxd ( trxnum, seqnum, acctnum, payee, amount ) values ( 20272, 1, 1030, 'SCHWAB US DIVIDEND EQUITY ETF', -6060 );
+insert into trxd ( trxnum, seqnum, acctnum, payee, amount ) values ( 20272, 2, 5011, 'SCHWAB US DIVIDEND EQUITY ETF', -6060 );
+insert into trxh ( trxnum, status, refnum, trxdate ) values ( 20273, 2, 'GAIN', '2024-11-14' );
+insert into trxd ( trxnum, seqnum, acctnum, payee, amount ) values ( 20273, 1, 1030, 'VANGUARD WHITEHALL FDS HIGH DIV YLD', 10866 );
+insert into trxd ( trxnum, seqnum, acctnum, payee, amount ) values ( 20273, 2, 5012, 'VANGUARD WHITEHALL FDS HIGH DIV YLD', 10866 );
+insert into trxh ( trxnum, status, refnum, trxdate ) values ( 20274, 2, 'GAIN', '2024-04-18' );
+insert into trxd ( trxnum, seqnum, acctnum, payee, amount ) values ( 20274, 1, 1030, 'VANGUARD WHITEHALL FDS HIGH DIV YLD', 5913 );
+insert into trxd ( trxnum, seqnum, acctnum, payee, amount ) values ( 20274, 2, 5011, 'VANGUARD WHITEHALL FDS HIGH DIV YLD', 5913 );
+insert into trxh ( trxnum, status, refnum, trxdate ) values ( 20275, 2, 'GAIN', '2024-04-18' );
+insert into trxd ( trxnum, seqnum, acctnum, payee, amount ) values ( 20275, 1, 1030, 'VANGUARD WHITEHALL FDS HIGH DIV YLD', 313 );
+insert into trxd ( trxnum, seqnum, acctnum, payee, amount ) values ( 20275, 2, 5011, 'VANGUARD WHITEHALL FDS HIGH DIV YLD', 313 );
+update system set trxnext = 20276;

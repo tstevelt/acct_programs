@@ -9,6 +9,7 @@
 	---------------------------------------------------------------------
 	tms		Jan 2021	Auto-recognize file format.
 	tms		04/03/2021	FixFidelity.sh (on iMac) and payee and refnum here.
+	tms		01/09/2025	Added IGNORE words.  Initially hard coded.
 
 ----------------------------------------------------------------------------*/
 //     Accounting Programs

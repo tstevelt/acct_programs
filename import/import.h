@@ -114,6 +114,9 @@ int ParseChaseCC ( char *Buffer, RESULT *Result );
 int ParseNatCityCC ( char *Buffer, RESULT *Result );
 int ParsePNC ( char *Buffer, RESULT *Result );
 
+/* Ignore.c */
+int Ignore ( char *String );
+
 /* ImportCSV.c */
 int ImportCSV ( char *Filename );
 

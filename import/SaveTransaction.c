@@ -147,7 +147,18 @@ void SaveTransaction ()
 				PrintHeader ();
 			}
 
-			printf ( "Skipping zero amount\n" );
+			printf ( "Skipping zero amount<br>\n" );
+
+			extern char sbuffer[];
+
+			printf ( "Buffer: %s<br>\n", sbuffer );
+
+			printf ( "NewTrxh: %-.8s, %04d-%02d-%02d, %-.40s, %ld<br>\n",
+					NewTrxh.xrefnum,
+					NewTrxh.xtrxdate.year4, NewTrxh.xtrxdate.month, NewTrxh.xtrxdate.day,
+					NewTrxd.xpayee,
+					NewTrxd.xamount );
+		
 		}
 		return;
 	}
